@@ -2,6 +2,10 @@ class ProductsController < ApplicationController
     def index
         @products = Product.all
     end
+
+    def show
+        @product = Product.find(params[:id])
+    end
 end
 
 # Modelo: Todo con respecto a la base de datos, consultas, validaciones, relaciones
