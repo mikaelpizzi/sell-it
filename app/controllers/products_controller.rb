@@ -24,6 +24,10 @@ class ProductsController < ApplicationController
     def product_params
         params.require(:product).permit(:title, :description, :price)
     end
+
+    def edit
+        @product = Product.find(params[:id])
+    end
 end
 
 # Modelo: Todo con respecto a la base de datos, consultas, validaciones, relaciones
