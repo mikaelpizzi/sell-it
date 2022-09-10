@@ -28,6 +28,16 @@ class ProductsController < ApplicationController
     def edit
         @product = Product.find(params[:id])
     end
+
+    def update
+        @product = Product.find(params[:id])
+
+        if @product.update(product_params) # Specify which params you want to update
+            redirect_to products_path, notice: "The product was edited successfully"
+        else
+            render :edit, status: :unprocessable_entity
+        end
+    end
 end
 
 # Modelo: Todo con respecto a la base de datos, consultas, validaciones, relaciones
