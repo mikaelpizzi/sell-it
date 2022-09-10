@@ -48,4 +48,11 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         
         assert_response :unprocessable_entity
     end
+
+    test "Render an edit product form" do
+        get edit_product_path(products(:ps5))
+
+        assert_response :success
+        assert_select "form"
+    end
 end
