@@ -34,6 +34,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         }
         
         assert_redirected_to products_path
+        assert_equal flash[:notice], "The product was created successfully"
     end
 
     test "Does not allow to create a new product with empty fields" do
