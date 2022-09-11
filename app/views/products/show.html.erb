@@ -13,5 +13,5 @@
 <%# link_to makes a GET request by default, we use a turbo method to override that %>
 <%= link_to "Delete Product", product_path(@product), data: {
     turbo_method: :delete,
-    turbo_confirm: "Delete Product?"
+    turbo_confirm: t("common.confirm")
 } %>
