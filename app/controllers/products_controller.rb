@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
     end
 
     def show
-        @product = Product.find(params[:id])
+        product
     end
 
     def new
@@ -23,13 +23,11 @@ class ProductsController < ApplicationController
     
     
     def edit
-        @product = Product.find(params[:id])
+        product
     end
     
     def update
-        @product = Product.find(params[:id])
-        
-        if @product.update(product_params) # Specify which params you want to update
+        if product.update(product_params) # Specify which params you want to update
             redirect_to products_path, notice: "The product was edited successfully"
         else
             render :edit, status: :unprocessable_entity
@@ -37,8 +35,7 @@ class ProductsController < ApplicationController
     end
     
     def destroy
-        @product = Product.find(params[:id])
-        @product.destroy
+        product.destroy
         # redirect_to returns 302 by default, a DELETE request with turbo can not handle that, see_other returns a 303, it does not link you to the current product (that is what we want, because the actual product was deleted)
         redirect_to products_path, notice: "The product was deleted successfully", status: :see_other
     end
@@ -47,6 +44,10 @@ class ProductsController < ApplicationController
 
     def product_params
         params.require(:product).permit(:title, :description, :price, :photo)
+    end
+
+    def product
+        @product = Product.find(params[:id])
     end
 end
 
