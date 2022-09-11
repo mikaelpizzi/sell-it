@@ -1,0 +1,9 @@
+<%= link_to product_path(product.id), class: "product" do %> <%# Usamos el método helper product_path %>
+    <div style="background-color: cyan;">
+        <h2><%= product.title %></h2>
+        <div>
+            <%= image_tag product.photo, width: 200 if product.photo.attached? %>
+        </div>
+        <span><%= product.price %></span>
+    </div>
+<% end %>
